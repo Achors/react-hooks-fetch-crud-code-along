@@ -7,6 +7,12 @@ function ShoppingList() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [items, setItems] = useState([]);
 
+  useEffect(() => {
+    fetch("https://localhost:4000/items")
+    .then((res) => res.json())
+    .then((items) => setItems(items));
+  }, []);
+
   function handleCategoryChange(category) {
     setSelectedCategory(category);
   }
